@@ -1,5 +1,5 @@
 import express = require("express");
-import { listNotes, createNote, readNote, updateNote } from "../services/note";
+import { listNotes, createNote, readNote, updateNote, destroyNote } from "../services/note";
 
 
 const list = (req: any, res: express.Response) => {
@@ -26,4 +26,10 @@ const update = (req: any, res: express.Response) => {
   });
 };
 
-export { list, create, read, update };
+const destroy = (req: any, res: express.Response) => {
+  destroyNote(req, result => {
+    res.status(result.status).json(result);
+  });
+};
+
+export { list, create, read, update, destroy };
