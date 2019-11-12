@@ -33,3 +33,8 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+      - http:
+          path: notes
+          method: post
+          cors: true
+          authorizer: aws_iam
