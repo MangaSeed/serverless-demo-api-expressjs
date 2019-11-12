@@ -121,4 +121,60 @@ const createNote = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
   }
 }
 
-export { createNote, listNotes }
+const readNote = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
+
+  // required param
+  const rparam = {
+    requestContext: data.requestContext,
+    params: data.params
+  }
+
+  const schema = object({
+    requestContext: object({
+      identity: object({
+        cognitoIdentityId: string().required()
+      }).unknown(true)
+    }).unknown(true),
+    params: object({
+      id : string().required().trim()
+    }).unknown(true)
+  }).unknown(true);
+
+  const { error, value } = schema.validate(rparam);
+
+  if (error === undefined) {
+
+    const queryParams = {
+      TableName: process.env.NOTES_TABLE,
+      Key: {
+        userId: data.requestContext.identity.cognitoIdentityId,
+        noteId: data.params.id
+      }
+    }
+
+    const res: ResponseDefaultType = { status: 200, message: '' }; // set default value
+    dynamoDb.get(queryParams, (err, result) => {
+
+      if (err) {
+        res.status = err.statusCode,
+        res.message = err.message
+      } else {
+        res.status = 200;
+        res.data = result.Item;
+        res.message = "Successfully fetch a note";
+      }
+
+      cb(res);
+
+    });
+  } else {
+    const response: ResponseDefaultType = {
+      status: 400,
+      message: "Invalid parameters"
+    }
+    console.log(error.details); // logs
+    cb(response);
+  }
+}
+
+export { listNotes, createNote, readNote }

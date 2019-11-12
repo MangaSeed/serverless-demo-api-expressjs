@@ -1,8 +1,6 @@
 import express = require("express");
-import AWS = require("aws-sdk");
-import uuid from "uuid";
-import { createNote, listNotes } from "../services/note";
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+import { listNotes, createNote, readNote  } from "../services/note";
+
 
 const list = (req: any, res: express.Response) => {
   listNotes(req, result => {
@@ -16,4 +14,10 @@ const create = (req: any, res: express.Response) => {
   });
 };
 
-export { create, list };
+const read = (req: any, res: express.Response) => {
+  readNote(req, result => {
+    res.status(result.status).json(result);
+  });
+};
+
+export { list, create, read };
