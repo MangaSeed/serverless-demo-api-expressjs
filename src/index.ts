@@ -6,15 +6,16 @@ import cors = require('cors');
 import dotenv = require('dotenv');
 dotenv.config();
 
-
 const app: express.Application = express()
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 /* ROUTES */
-import { noteRouter } from './routes/notes';
+import { notesRouter } from './routes/notes';
+import { billsRouter } from './routes/bills';
 
-app.use('/notes', noteRouter);
+app.use('/notes', notesRouter);
+app.use('/billing', billsRouter);
 
 module.exports.handler = serverless(app);

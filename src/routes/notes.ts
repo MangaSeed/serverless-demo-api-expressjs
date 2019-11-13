@@ -1,12 +1,12 @@
 import { Router } from 'express'
 import { list, create, read, update, destroy } from '../controllers/notes';
 
-const noteRouter: Router = Router();
+const notesRouter: Router = Router();
 
-noteRouter.get('/', list);
-noteRouter.get('/:id', read);
-noteRouter.post('/', create);
-noteRouter.put('/:id', update);
-noteRouter.delete('/:id', destroy);
+notesRouter.get('/', list);
+notesRouter.get('/:id', read);
+notesRouter.post('/', create);
+notesRouter.put('/:id', update);
+notesRouter.delete('/:id', destroy);
 
-export { noteRouter };
+export { notesRouter };

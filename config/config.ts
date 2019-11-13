@@ -1,8 +1,8 @@
 import { configType } from "../src/types/configType";
 
-let config = {
+const config = {
   development: {
-    stripeSecretKey: "",
+    stripeSecretKey: "sk_test_3dtYpQYtleuhyaGqdwP92yFt00MiouEYgt",
     stripeKeyName: ""
   },
   staging : {
@@ -27,9 +27,9 @@ switch(environment) {
   case 'production':
     finalconfig = config.production;
   break;
-  default : 
+  default :
     finalconfig = config.development;
   break;
 }
 
-export default finalconfig;
+export { finalconfig as config };
