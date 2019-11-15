@@ -41,30 +41,15 @@ resources:
   - ${file(resources/cognito-identity-pool.yml)}
 functions:
   app:
-    handler: dist/src/index.handler
+    handler: dist/index.handler
     events:
       - http:
-          path: notes
-          method: get
-          cors: true
+          path: /
+          method: ANY
+          cors: true  
           authorizer: aws_iam
       - http:
-          path: notes
-          method: post
-          cors: true
-          authorizer: aws_iam
-      - http:
-          path: notes/{id}
-          method: get
-          cors: true
-          authorizer: aws_iam
-      - http:
-          path: notes/{id}
-          method: put
-          cors: true
-          authorizer: aws_iam
-      - http:
-          path: notes/{id}
-          method: delete
+          path: /{proxy+}
+          method: ANY
           cors: true
           authorizer: aws_iam

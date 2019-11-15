@@ -65,8 +65,9 @@ const createNote = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
   // required param
   const rparam = {
     requestContext: data.requestContext,
-    body: JSON.parse(data.body)
+    body: data.body
   }
+  console.log("BODY: ", data.body);
 
   const schema = object({
     requestContext: object({
@@ -83,7 +84,7 @@ const createNote = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
 
   if (error === undefined) {
 
-    const { content, attachment } = JSON.parse(data.body);
+    const { content, attachment } = data.body;
 
     const queryParams = {
       TableName: process.env.NOTES_TABLE,
@@ -182,7 +183,7 @@ const updateNote = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
   // required param
   const rparam = {
     requestContext: data.requestContext,
-    body: JSON.parse(data.body)
+    body: data.body
   }
 
   const schema = object({
@@ -200,7 +201,7 @@ const updateNote = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
 
   if (error === undefined) {
 
-    const { content, attachment } = JSON.parse(data.body);
+    const { content, attachment } = data.body;
 
     const queryParams = {
       TableName: process.env.NOTES_TABLE,
