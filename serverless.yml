@@ -1,7 +1,7 @@
 service: note-express-api
 
-# plugins:
-#   - serverless-offline
+plugins:
+  - serverless-offline
 
 custom:
   # Our stage is based on what is passed in when running serverless
