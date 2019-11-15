@@ -17,7 +17,7 @@ jobs:
           node-version: '10.x'
       - run: npm install
       - run: npm install serverless-offline
-      # - run: npm test
+      - run: npm run build
       - name: serverless deploy
         uses: serverless/github-action@master
         with:
