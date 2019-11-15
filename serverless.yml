@@ -41,7 +41,7 @@ resources:
   - ${file(resources/cognito-identity-pool.yml)}
 functions:
   app:
-    handler: dist/index.handler
+    handler: dist/src/index.handler
     events:
       - http:
           path: /

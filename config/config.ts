@@ -2,7 +2,7 @@ import { configType } from "../src/types/configType";
 
 const config = {
   development: {
-    stripeSecretKey: "",
+    stripeSecretKey: "sk_test_3dtYpQYtleuhyaGqdwP92yFt00MiouEYgt",
     stripeKeyName: ""
   },
   staging : {
@@ -32,4 +32,4 @@ switch(environment) {
   break;
 }
 
-export default finalconfig;
+export { finalconfig as config };
