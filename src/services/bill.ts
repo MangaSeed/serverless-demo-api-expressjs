@@ -24,7 +24,7 @@ const createBill = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
   // required param
   const rparam = {
     requestContext: data.requestContext,
-    body: JSON.parse(data.body)
+    body: data.body
   }
 
   const schema = object({
@@ -43,7 +43,7 @@ const createBill = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
 
   if (error === undefined) {
 
-    const { storage, source } = JSON.parse(data.body);
+    const { storage, source } = data.body;
     const amount = calculateCost(storage);
     const description = "Scratch charge";
     const stripe = new stripePackage(process.env.STRIPE_SECRET_KEY);
