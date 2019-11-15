@@ -19,9 +19,8 @@ jobs:
       - run: npm install serverless-offline
       - run: npm run build
       - name: serverless deploy
-        uses: serverless/github-action@master
-        with:
-          args: deploy --stage dev
+      - uses: serverless/github-action@master
+      - run: serverless deploy -v
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
