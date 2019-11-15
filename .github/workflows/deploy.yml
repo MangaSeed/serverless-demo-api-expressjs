@@ -14,7 +14,9 @@ jobs:
       - name: npm install
         uses: actions/setup-node@master
         with:
-          args: install
+          node-version: '10.x'
+      - run: npm install
+      - run: npm test
       - name: serverless deploy
         uses: serverless/github-action@master
         with:
