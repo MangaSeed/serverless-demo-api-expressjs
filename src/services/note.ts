@@ -1,12 +1,10 @@
-import AWS = require('aws-sdk');
 import uuid from 'uuid';
 import Joi, {
   string,
   object
 } from "@hapi/joi";
 import { ResponseDefaultType } from '../types/responseDefaultType';
-
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+import dynamoDb from '../libs/dynamoDb';
 
 const listNotes = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
 
@@ -51,12 +49,12 @@ const listNotes = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
 
     });
   } else {
-    const response: ResponseDefaultType = {
+    const res: ResponseDefaultType = {
       status: 400,
       message: "Invalid parameters"
     }
     console.log(error.details); // logs
-    cb(response);
+    cb(res);
   }
 }
 
@@ -67,7 +65,6 @@ const createNote = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
     requestContext: data.requestContext,
     body: data.body
   }
-  console.log("BODY: ", data.body);
 
   const schema = object({
     requestContext: object({

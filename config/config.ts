@@ -3,13 +3,17 @@ import { configType } from "../src/types/configType";
 const config = {
   development: {
     stripeSecretKey: "sk_test_3dtYpQYtleuhyaGqdwP92yFt00MiouEYgt",
-    stripeKeyName: ""
+    stripeKeyName: "",
+    dynamoDbLocalUrl: 'http://localhost:8000',
+    isOffline: true
   },
   staging : {
+    isOffline: false,
     stripeSecretKey: "",
     stripeKeyName: ""
   },
   production : {
+    isOffline: false,
     stripeSecretKey: "",
     stripeKeyName: ""
   }

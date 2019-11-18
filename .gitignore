@@ -53,5 +53,6 @@ env.yml
 .idea
 
 /dist
+.dynamodb
 
 /tmpnodejsnpm-cache
