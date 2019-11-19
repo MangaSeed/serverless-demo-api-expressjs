@@ -1,6 +1,7 @@
 service: note-express-api
 
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline
 
 custom:
@@ -9,6 +10,14 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   # Set the table name here so we can use it while testing locally
   tableName: ${self:custom.stage}-notes
+
+  dynamodb:
+    start:
+      migrate: true
+    stages:
+      - dev
+    endpoints:
+      dynamodb-url: 'http://localhost:8000'
 provider:
   name: aws
   runtime: nodejs10.x
@@ -29,6 +38,8 @@ provider:
 environment:
   tableName: ${self:custom.tableName}
   stripeSecretKey: ${env:STRIPE_SECRET_KEY}
+  CONFIG_PERSONS_TABLE: ${self:custom.tableNames.${self:custom.stage}-notes}
+  CONFIG_DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodb-url}
 resources:
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}

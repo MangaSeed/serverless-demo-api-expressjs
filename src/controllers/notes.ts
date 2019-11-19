@@ -4,11 +4,12 @@ import { listNotes, createNote, readNote, updateNote, destroyNote } from "../ser
 
 const list = (req: any, res: express.Response) => {
   listNotes(req, result => {
-    res.status(result.status).json(result);
+    res.status(result.status).json(result).end();
   });
 };
 
 const create = (req: any, res: express.Response) => {
+  console.log("from controller: ", req.body);
   createNote(req, result => {
     res.status(result.status).json(result);
   });
