@@ -9,7 +9,7 @@ dotenv.config();
 const app: express.Application = express()
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.json());
 
 /* ROUTES */
 import { notesRouter } from './routes/notes';

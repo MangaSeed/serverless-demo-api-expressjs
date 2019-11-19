@@ -46,7 +46,7 @@ const createBill = (data: any, cb: (arg0: ResponseDefaultType) => void) => {
     const { storage, source } = data.body;
     const amount = calculateCost(storage);
     const description = "Scratch charge";
-    const stripe = new stripePackage(process.env.STRIPE_SECRET_KEY);
+    const stripe = new stripePackage(config.stripeSecretKey);
 
     const res: ResponseDefaultType = { status: 200, message: '' }; // set default value
 
