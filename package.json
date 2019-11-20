@@ -8,7 +8,8 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
-    "test": "jest"
+    "test": "sls offline start --exec jest",
+    "pretest": "npm run build"
   },
   "jest": {
     "testEnvironment": "node",
