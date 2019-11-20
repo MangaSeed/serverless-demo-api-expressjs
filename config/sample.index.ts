@@ -4,7 +4,8 @@ const config = {
   development: {
     stripeSecretKey: "",
     stripeKeyName: "",
-    dynamoDbLocalUrl: "",
+    dynamoDbLocalUrl: "http://localhost:8000",
+    testApiUrl: "http://localhost:3000",
     isOffline: false
   },
   staging : {

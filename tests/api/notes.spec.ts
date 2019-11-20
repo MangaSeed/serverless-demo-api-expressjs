@@ -1,5 +1,5 @@
 import request from "supertest";
-import { config } from '../../config/config';
+import { config } from '../../config';
 let note: any;
 
 // CREATE
