@@ -1,4 +1,4 @@
-import { config } from '../../config/config';
+import { config } from '../../config';
 import AWS = require('aws-sdk');
 
 let dynamoDB: AWS.DynamoDB.DocumentClient;

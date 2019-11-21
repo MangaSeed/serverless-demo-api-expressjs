@@ -1,5 +1,5 @@
 {
-  "name": "Serverless-Mangaseed-Express-API",
+  "name": "serverless-demo-api-expressjs",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/index.js",
@@ -8,7 +8,14 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sls offline start --exec jest",
+    "pretest": "npm run build"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -31,6 +38,11 @@
     "ts-node": "^8.4.1"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/supertest": "^2.0.8",
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.1.0",
     "serverless-offline": "^5.12.0",
     "serverless-dynamodb-local": "^0.2.38",
     "tslint": "^6.0.0-beta0",

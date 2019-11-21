@@ -1,7 +1,7 @@
 import AWS = require('aws-sdk');
 import stripePackage from "stripe";
 import { calculateCost } from '../libs/billing';
-import { config } from "../../config/config";
+import { config } from "../../config";
 
 import Joi, {
   string,

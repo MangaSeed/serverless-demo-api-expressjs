@@ -2,20 +2,21 @@ import { configType } from "../src/types/configType";
 
 const config = {
   development: {
-    stripeSecretKey: "sk_test_3dtYpQYtleuhyaGqdwP92yFt00MiouEYgt",
+    stripeSecretKey: "",
     stripeKeyName: "",
-    dynamoDbLocalUrl: 'http://localhost:8000',
-    isOffline: true
+    dynamoDbLocalUrl: "http://localhost:8000",
+    testApiUrl: "http://localhost:3000",
+    isOffline: false
   },
   staging : {
-    isOffline: false,
     stripeSecretKey: "",
-    stripeKeyName: ""
+    stripeKeyName: "",
+    isOffline: false
   },
   production : {
-    isOffline: false,
     stripeSecretKey: "",
-    stripeKeyName: ""
+    stripeKeyName: "",
+    isOffline: false
   }
 }
 
@@ -36,4 +37,4 @@ switch(environment) {
   break;
 }
 
-export { finalconfig as config };
+export default finalconfig;
