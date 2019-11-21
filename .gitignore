@@ -56,3 +56,5 @@ env.yml
 .dynamodb
 
 /tmpnodejsnpm-cache
+
+config/index.ts
