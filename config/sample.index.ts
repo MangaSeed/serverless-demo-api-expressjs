@@ -37,4 +37,4 @@ switch(environment) {
   break;
 }
 
-export default finalconfig;
+export { finalconfig as config };
